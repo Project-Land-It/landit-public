@@ -18,7 +18,7 @@ Discord's servers may not be able to access the avatar URL because:
 
 2. **Token-Based URLs**
    - Taiga avatar URLs include authentication tokens
-   - Format: `?token=aWFu9w%3AYBQtCdrBHi...`
+   - Format: `?token=<signed-token>` (redacted)
    - These tokens may expire or not work externally
 
 3. **Nginx Proxy Manager Configuration**
@@ -87,7 +87,7 @@ Until external media access is fixed, you can:
 python3 << 'PYEOF'
 import requests
 
-url = "https://taiga.landit4.fun/media/user/0/6/9/b/07613e48c4fd95af398c2fff9a36c81ae03247974fd3f9f936d17b0dd846/charlie.png.80x80_q85_crop.jpg?token=aWFu9w%3AYBQtCdrBHi7lR-kUVt_8ByWGcUORT8P0kc5c2SCfF4P12uPsUds_IKN4E9ee2eTNkOxGEa5ogH8Gb1XmOGhMvQ"
+url = "https://taiga.landit4.fun/media/user/<uid-path>/charlie.png.80x80_q85_crop.jpg?token=<signed-token-removed>"  # signed token redacted — see GL-221
 
 try:
     response = requests.get(url, timeout=10)
